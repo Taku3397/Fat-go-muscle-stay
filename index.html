@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#111418">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>Plan - Oct to Dec</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#111418;color:#e8eaed;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:78px}
+header{position:sticky;top:0;z-index:20;background:#171b20;border-bottom:1px solid #2a3038;padding:10px 12px calc(10px + env(safe-area-inset-top)) 12px;padding-top:calc(10px + env(safe-area-inset-top))}
+.nav{display:flex;align-items:center;gap:8px}
+.nav button{background:#232a32;border:0;color:#e8eaed;font-size:20px;width:44px;height:44px;border-radius:12px}
+.nav .mid{flex:1;text-align:center}
+.nav .mid b{display:block;font-size:17px}
+.nav .mid span{font-size:12px;color:#93a0ad}
+.badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.b{font-size:11px;padding:4px 9px;border-radius:99px;background:#232a32;color:#b9c4cf}
+.b.H{background:#4a2a22;color:#ffc6ae}.b.M{background:#22402c;color:#a8e0bb}.b.R{background:#1e3350;color:#a9caf5}
+.b.dl{background:#4a4222;color:#ffe6a8}
+.wrap{padding:12px}
+.card{background:#1a1f25;border:1px solid #262d35;border-radius:14px;margin-bottom:10px;overflow:hidden}
+.card h3{margin:0;padding:12px 14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8b97a3;border-bottom:1px solid #262d35}
+.row{display:flex;gap:10px;padding:12px 14px;align-items:flex-start;border-bottom:1px solid #20262d}
+.row:last-child{border-bottom:0}
+.ck{flex:0 0 26px;width:26px;height:26px;border-radius:8px;border:2px solid #3a444f;background:transparent;margin-top:2px}
+.ck.on{background:#2f9e5e;border-color:#2f9e5e;position:relative}
+.ck.on:after{content:"";position:absolute;left:7px;top:3px;width:6px;height:12px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.row .body{flex:1;min-width:0}
+.row .ttl{font-weight:600;font-size:15px}
+.row .sub{font-size:13.5px;color:#a7b2bd;margin-top:3px;white-space:pre-wrap}
+.row .meta{font-size:11.5px;color:#7d8896;margin-top:5px}
+.swap{background:#232a32;border:0;color:#9fd0ff;font-size:12px;padding:6px 10px;border-radius:8px;margin-top:7px}
+.done .ttl,.done .sub{opacity:.42;text-decoration:line-through}
+.alert{background:#3a1f2b;border:1px solid #6b3247;color:#ffc9d8;border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:14px}
+.alert b{display:block;margin-bottom:5px;color:#ff9fbb}
+.tbar{display:flex;gap:8px;margin-bottom:10px}
+.tbar div{flex:1;background:#1a1f25;border:1px solid #262d35;border-radius:12px;padding:10px;text-align:center}
+.tbar b{display:block;font-size:20px}.tbar span{font-size:11px;color:#8b97a3}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;display:flex;background:#171b20;border-top:1px solid #2a3038;padding-bottom:env(safe-area-inset-bottom);z-index:30}
+nav.tabs button{flex:1;background:0;border:0;color:#8b97a3;padding:11px 0 13px;font-size:11px}
+nav.tabs button.on{color:#6fb5ff}
+nav.tabs button i{display:block;font-size:19px;font-style:normal;margin-bottom:2px}
+.ex{padding:10px 14px;font-size:14px;color:#c3ccd6}
+.ex div{padding:5px 0;border-bottom:1px solid #20262d}.ex div:last-child{border:0}
+input[type=number],input[type=date]{background:#232a32;border:1px solid #333c46;color:#e8eaed;padding:11px;border-radius:10px;font-size:16px;width:100%}
+.btn{background:#2f6fd0;border:0;color:#fff;padding:13px;border-radius:11px;font-size:15px;width:100%;font-weight:600}
+.btn.warn{background:#a03a5a}.btn.ghost{background:#232a32;color:#c3ccd6}
+.wk{display:flex;gap:9px;padding:11px 14px;border-bottom:1px solid #20262d;align-items:center}
+.wk:last-child{border:0}
+.wk .dd{flex:0 0 52px;font-size:12px;color:#8b97a3}
+.wk .tt{flex:1;font-size:13.5px}
+.wk.today{background:#1f2a35}
+small.dim{color:#7d8896;font-size:12px}
+.lst{font-size:13.5px}
+.lst div{display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid #20262d}
+h2{font-size:15px;margin:16px 0 8px;color:#cfd8e2}
+</style></head><body>
+<header>
+  <div class="nav">
+    <button onclick="mv(-1)">&#8249;</button>
+    <div class="mid"><b id="hd"></b><span id="hs"></span></div>
+    <button onclick="mv(1)">&#8250;</button>
+  </div>
+  <div class="badges" id="bg"></div>
+</header>
+<div class="wrap" id="v"></div>
+<nav class="tabs">
+  <button id="t0" class="on" onclick="go(0)"><i>&#9728;</i>Today</button>
+  <button id="t1" onclick="go(1)"><i>&#9776;</i>Week</button>
+  <button id="t2" onclick="go(2)"><i>&#9679;</i>Log</button>
+  <button id="t3" onclick="go(3)"><i>&#8505;</i>Guide</button>
+</nav>
+<script>
+const DATA = {"days":[{"d":"2026-10-08","wd":"Thu","nice":"Thu 08 Oct","wk":1,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH A","alt":"Alt: 30 min easy run + core","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-10-09","wd":"Fri","nice":"Fri 09 Oct","wk":1,"blk":"Block 1","dl":false,"type":"R","kcal":1450,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-10-10","wd":"Sat","nice":"Sat 10 Oct","wk":1,"blk":"Block 1","dl":false,"type":"H","kcal":1800,"label":"CROSSFIT - compete or gymnastics","tkey":"CROSSFIT compete","alt":"Alt: gymnastics class if legs are cooked","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L1","din":"D6","sn":["S2"]},{"d":"2026-10-11","wd":"Sun","nice":"Sun 11 Oct","wk":1,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"RUN - easy 35-45 min","tkey":"RUN easy","alt":"Alt: full rest","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-10-12","wd":"Mon","nice":"Mon 12 Oct","wk":2,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH B","alt":"Alt: swap to Pull if shoulders are beat up","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-10-13","wd":"Tue","nice":"Tue 13 Oct","wk":2,"blk":"Block 1","dl":false,"type":"H","kcal":1800,"label":"CROSSFIT - compete WOD","tkey":"CROSSFIT compete","alt":"Alt: scale loads to 85-90%","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L2","din":"D7","sn":["S4","S1","S3"]},{"d":"2026-10-14","wd":"Wed","nice":"Wed 14 Oct","wk":2,"blk":"Block 1","dl":false,"type":"R","kcal":1450,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout run, easy","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B3","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-10-15","wd":"Thu","nice":"Thu 15 Oct","wk":2,"blk":"Block 1","dl":false,"type":"H","kcal":1800,"label":"GYM - Legs + Hips","tkey":"LEGS B","alt":"Alt: LEGS B if hips are tight","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B4","lu":"L2","din":"D3","sn":["S1","S3"]},{"d":"2026-10-16","wd":"Fri","nice":"Fri 16 Oct","wk":2,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"GYM - Pull: back / biceps","tkey":"PULL B","alt":"Alt: 20 min tempo run if time-poor","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D4","sn":["S1","S2"]},{"d":"2026-10-17","wd":"Sat","nice":"Sat 17 Oct","wk":2,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"RUN - long easy 45-60 min","tkey":"RUN long","alt":"Alt: 35 min easy + 20 min core","light":"Cut to 25-30 min easy, or walk 45 min instead.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-10-18","wd":"Sun","nice":"Sun 18 Oct","wk":2,"blk":"Block 1","dl":false,"type":"R","kcal":1450,"label":"REST - mobility / sauna / walk","tkey":"REST","alt":"Alt: 25 min shakeout + strides","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B5","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-10-19","wd":"Mon","nice":"Mon 19 Oct","wk":3,"blk":"Block 1","dl":false,"type":"H","kcal":1800,"label":"GYM - Legs + Hips","tkey":"LEGS A","alt":"Alt: LEGS A always if unsure","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B1","lu":"L2","din":"D1","sn":["S1","S2"]},{"d":"2026-10-20","wd":"Tue","nice":"Tue 20 Oct","wk":3,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: 20 min tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-10-21","wd":"Wed","nice":"Wed 21 Oct","wk":3,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"CROSSFIT - gymnastics / skill","tkey":"CROSSFIT gymnastics","alt":"Alt: add 10 min row after class","light":"Attend for skill only, low volume, no kipping or impact work. Or swap for 30 min easy row + mobility.","bf":"B3","lu":"L1","din":"D2","sn":["S4","S1","S3"]},{"d":"2026-10-22","wd":"Thu","nice":"Thu 22 Oct","wk":3,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"GYM - Pull: back / biceps","tkey":"PULL A","alt":"Alt: drop to 3 exercises if class wrecked your grip","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-10-23","wd":"Fri","nice":"Fri 23 Oct","wk":3,"blk":"Block 1","dl":false,"type":"R","kcal":1450,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: easy 25 min run","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-10-24","wd":"Sat","nice":"Sat 24 Oct","wk":3,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH A","alt":"Alt: 2nd CrossFit class","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-10-25","wd":"Sun","nice":"Sun 25 Oct","wk":3,"blk":"Block 1","dl":false,"type":"M","kcal":1650,"label":"RUN - easy 40-55 min","tkey":"RUN easy","alt":"Alt: full rest if legs are flat","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-10-26","wd":"Mon","nice":"Mon 26 Oct","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"M","kcal":1700,"label":"GYM - Pull: back / biceps","tkey":"PULL B","alt":"Alt: Push if Saturday WOD was pulling-heavy","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-10-27","wd":"Tue","nice":"Tue 27 Oct","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"M","kcal":1700,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: RUN tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-10-28","wd":"Wed","nice":"Wed 28 Oct","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"H","kcal":1900,"label":"GYM - Legs + Hips","tkey":"LEGS B","alt":"Alt: LEGS B","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B3","lu":"L2","din":"D2","sn":["S1","S2"]},{"d":"2026-10-29","wd":"Thu","nice":"Thu 29 Oct","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"M","kcal":1700,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH B","alt":"Alt: 30 min easy run + core","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-10-30","wd":"Fri","nice":"Fri 30 Oct","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"R","kcal":1550,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-10-31","wd":"Sat","nice":"Sat 31 Oct","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"H","kcal":1900,"label":"CROSSFIT - compete or gymnastics","tkey":"CROSSFIT compete","alt":"Alt: gymnastics class if legs are cooked","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L1","din":"D6","sn":["S2"]},{"d":"2026-11-01","wd":"Sun","nice":"Sun 01 Nov","wk":4,"blk":"Block 1 DELOAD","dl":true,"type":"M","kcal":1700,"label":"RUN - easy 35-45 min","tkey":"RUN easy","alt":"Alt: full rest","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-11-02","wd":"Mon","nice":"Mon 02 Nov","wk":5,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH A","alt":"Alt: swap to Pull if shoulders are beat up","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-11-03","wd":"Tue","nice":"Tue 03 Nov","wk":5,"blk":"Block 2","dl":false,"type":"H","kcal":1800,"label":"CROSSFIT - compete WOD","tkey":"CROSSFIT compete","alt":"Alt: scale loads to 85-90%","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L2","din":"D7","sn":["S4","S1","S3"]},{"d":"2026-11-04","wd":"Wed","nice":"Wed 04 Nov","wk":5,"blk":"Block 2","dl":false,"type":"R","kcal":1400,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout run, easy","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B3","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-11-05","wd":"Thu","nice":"Thu 05 Nov","wk":5,"blk":"Block 2","dl":false,"type":"H","kcal":1800,"label":"GYM - Legs + Hips","tkey":"LEGS A","alt":"Alt: LEGS B if hips are tight","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B4","lu":"L2","din":"D3","sn":["S1","S3"]},{"d":"2026-11-06","wd":"Fri","nice":"Fri 06 Nov","wk":5,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"GYM - Pull: back / biceps","tkey":"PULL A","alt":"Alt: 20 min tempo run if time-poor","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D4","sn":["S1","S2"]},{"d":"2026-11-07","wd":"Sat","nice":"Sat 07 Nov","wk":5,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"RUN - long easy 45-60 min","tkey":"RUN long","alt":"Alt: 35 min easy + 20 min core","light":"Cut to 25-30 min easy, or walk 45 min instead.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-11-08","wd":"Sun","nice":"Sun 08 Nov","wk":5,"blk":"Block 2","dl":false,"type":"R","kcal":1400,"label":"REST - mobility / sauna / walk","tkey":"REST","alt":"Alt: 25 min shakeout + strides","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B5","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-11-09","wd":"Mon","nice":"Mon 09 Nov","wk":6,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"GYM - Pull: back / biceps","tkey":"PULL B","alt":"Alt: Push if Saturday WOD was pulling-heavy","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-11-10","wd":"Tue","nice":"Tue 10 Nov","wk":6,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: RUN tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-11-11","wd":"Wed","nice":"Wed 11 Nov","wk":6,"blk":"Block 2","dl":false,"type":"H","kcal":1800,"label":"GYM - Legs + Hips","tkey":"LEGS B","alt":"Alt: LEGS B","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B3","lu":"L2","din":"D2","sn":["S1","S2"]},{"d":"2026-11-12","wd":"Thu","nice":"Thu 12 Nov","wk":6,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH B","alt":"Alt: 30 min easy run + core","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-11-13","wd":"Fri","nice":"Fri 13 Nov","wk":6,"blk":"Block 2","dl":false,"type":"R","kcal":1400,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-11-14","wd":"Sat","nice":"Sat 14 Nov","wk":6,"blk":"Block 2","dl":false,"type":"H","kcal":1800,"label":"CROSSFIT - compete or gymnastics","tkey":"CROSSFIT compete","alt":"Alt: gymnastics class if legs are cooked","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L1","din":"D6","sn":["S2"]},{"d":"2026-11-15","wd":"Sun","nice":"Sun 15 Nov","wk":6,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"RUN - easy 35-45 min","tkey":"RUN easy","alt":"Alt: full rest","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-11-16","wd":"Mon","nice":"Mon 16 Nov","wk":7,"blk":"Block 2","dl":false,"type":"H","kcal":1800,"label":"GYM - Legs + Hips","tkey":"LEGS A","alt":"Alt: LEGS A always if unsure","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B1","lu":"L2","din":"D1","sn":["S1","S2"]},{"d":"2026-11-17","wd":"Tue","nice":"Tue 17 Nov","wk":7,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: 20 min tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-11-18","wd":"Wed","nice":"Wed 18 Nov","wk":7,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"CROSSFIT - gymnastics / skill","tkey":"CROSSFIT gymnastics","alt":"Alt: add 10 min row after class","light":"Attend for skill only, low volume, no kipping or impact work. Or swap for 30 min easy row + mobility.","bf":"B3","lu":"L1","din":"D2","sn":["S4","S1","S3"]},{"d":"2026-11-19","wd":"Thu","nice":"Thu 19 Nov","wk":7,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"GYM - Pull: back / biceps","tkey":"PULL A","alt":"Alt: drop to 3 exercises if class wrecked your grip","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-11-20","wd":"Fri","nice":"Fri 20 Nov","wk":7,"blk":"Block 2","dl":false,"type":"R","kcal":1400,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: easy 25 min run","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-11-21","wd":"Sat","nice":"Sat 21 Nov","wk":7,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH A","alt":"Alt: 2nd CrossFit class","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-11-22","wd":"Sun","nice":"Sun 22 Nov","wk":7,"blk":"Block 2","dl":false,"type":"M","kcal":1600,"label":"RUN - easy 40-55 min","tkey":"RUN easy","alt":"Alt: full rest if legs are flat","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-11-23","wd":"Mon","nice":"Mon 23 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"M","kcal":1700,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH B","alt":"Alt: swap to Pull if shoulders are beat up","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-11-24","wd":"Tue","nice":"Tue 24 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"H","kcal":1900,"label":"CROSSFIT - compete WOD","tkey":"CROSSFIT compete","alt":"Alt: scale loads to 85-90%","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L2","din":"D7","sn":["S4","S1","S3"]},{"d":"2026-11-25","wd":"Wed","nice":"Wed 25 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"R","kcal":1550,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout run, easy","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B3","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-11-26","wd":"Thu","nice":"Thu 26 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"H","kcal":1900,"label":"GYM - Legs + Hips","tkey":"LEGS B","alt":"Alt: LEGS B if hips are tight","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B4","lu":"L2","din":"D3","sn":["S1","S3"]},{"d":"2026-11-27","wd":"Fri","nice":"Fri 27 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"M","kcal":1700,"label":"GYM - Pull: back / biceps","tkey":"PULL B","alt":"Alt: 20 min tempo run if time-poor","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D4","sn":["S1","S2"]},{"d":"2026-11-28","wd":"Sat","nice":"Sat 28 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"M","kcal":1700,"label":"RUN - long easy 45-60 min","tkey":"RUN long","alt":"Alt: 35 min easy + 20 min core","light":"Cut to 25-30 min easy, or walk 45 min instead.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-11-29","wd":"Sun","nice":"Sun 29 Nov","wk":8,"blk":"Block 2 DELOAD","dl":true,"type":"R","kcal":1550,"label":"REST - mobility / sauna / walk","tkey":"REST","alt":"Alt: 25 min shakeout + strides","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B5","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-11-30","wd":"Mon","nice":"Mon 30 Nov","wk":9,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"GYM - Pull: back / biceps","tkey":"PULL A","alt":"Alt: Push if Saturday WOD was pulling-heavy","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-12-01","wd":"Tue","nice":"Tue 01 Dec","wk":9,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: RUN tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-12-02","wd":"Wed","nice":"Wed 02 Dec","wk":9,"blk":"Block 3","dl":false,"type":"H","kcal":1750,"label":"GYM - Legs + Hips","tkey":"LEGS A","alt":"Alt: LEGS B","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B3","lu":"L2","din":"D2","sn":["S1","S2"]},{"d":"2026-12-03","wd":"Thu","nice":"Thu 03 Dec","wk":9,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH A","alt":"Alt: 30 min easy run + core","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-12-04","wd":"Fri","nice":"Fri 04 Dec","wk":9,"blk":"Block 3","dl":false,"type":"R","kcal":1380,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-12-05","wd":"Sat","nice":"Sat 05 Dec","wk":9,"blk":"Block 3","dl":false,"type":"H","kcal":1750,"label":"CROSSFIT - compete or gymnastics","tkey":"CROSSFIT compete","alt":"Alt: gymnastics class if legs are cooked","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L1","din":"D6","sn":["S2"]},{"d":"2026-12-06","wd":"Sun","nice":"Sun 06 Dec","wk":9,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"RUN - easy 35-45 min","tkey":"RUN easy","alt":"Alt: full rest","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-12-07","wd":"Mon","nice":"Mon 07 Dec","wk":10,"blk":"Block 3","dl":false,"type":"H","kcal":1750,"label":"GYM - Legs + Hips","tkey":"LEGS B","alt":"Alt: LEGS A always if unsure","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B1","lu":"L2","din":"D1","sn":["S1","S2"]},{"d":"2026-12-08","wd":"Tue","nice":"Tue 08 Dec","wk":10,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: 20 min tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-12-09","wd":"Wed","nice":"Wed 09 Dec","wk":10,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"CROSSFIT - gymnastics / skill","tkey":"CROSSFIT gymnastics","alt":"Alt: add 10 min row after class","light":"Attend for skill only, low volume, no kipping or impact work. Or swap for 30 min easy row + mobility.","bf":"B3","lu":"L1","din":"D2","sn":["S4","S1","S3"]},{"d":"2026-12-10","wd":"Thu","nice":"Thu 10 Dec","wk":10,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"GYM - Pull: back / biceps","tkey":"PULL B","alt":"Alt: drop to 3 exercises if class wrecked your grip","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B4","lu":"L3","din":"D3","sn":["S1","S3"]},{"d":"2026-12-11","wd":"Fri","nice":"Fri 11 Dec","wk":10,"blk":"Block 3","dl":false,"type":"R","kcal":1380,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: easy 25 min run","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B1","lu":"L4","din":"D4","sn":["S1","S2"]},{"d":"2026-12-12","wd":"Sat","nice":"Sat 12 Dec","wk":10,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH B","alt":"Alt: 2nd CrossFit class","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-12-13","wd":"Sun","nice":"Sun 13 Dec","wk":10,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"RUN - easy 40-55 min","tkey":"RUN easy","alt":"Alt: full rest if legs are flat","light":"Fine as-is, or shorten to 25 min. Walk if cramping.","bf":"B5","lu":"L1","din":"D5","sn":["S1","S2"]},{"d":"2026-12-14","wd":"Mon","nice":"Mon 14 Dec","wk":11,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"GYM - Push: chest / shoulder / triceps","tkey":"PUSH A","alt":"Alt: swap to Pull if shoulders are beat up","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. No failure sets, no overhead press if you feel dizzy.","bf":"B1","lu":"L1","din":"D1","sn":["S1","S2"]},{"d":"2026-12-15","wd":"Tue","nice":"Tue 15 Dec","wk":11,"blk":"Block 3","dl":false,"type":"H","kcal":1750,"label":"CROSSFIT - compete WOD","tkey":"CROSSFIT compete","alt":"Alt: scale loads to 85-90%","light":"NO competing. Either scale the class hard (no maxes, no kipping, no box jumps) or swap for 30-40 min easy bike/row + 15 min mobility.","bf":"B2","lu":"L2","din":"D7","sn":["S4","S1","S3"]},{"d":"2026-12-16","wd":"Wed","nice":"Wed 16 Dec","wk":11,"blk":"Block 3","dl":false,"type":"R","kcal":1380,"label":"REST - walk + mobility","tkey":"REST","alt":"Alt: 25 min shakeout run, easy","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B3","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-12-17","wd":"Thu","nice":"Thu 17 Dec","wk":11,"blk":"Block 3","dl":false,"type":"H","kcal":1750,"label":"GYM - Legs + Hips","tkey":"LEGS A","alt":"Alt: LEGS B if hips are tight","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B4","lu":"L2","din":"D3","sn":["S1","S3"]},{"d":"2026-12-18","wd":"Fri","nice":"Fri 18 Dec","wk":11,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"GYM - Pull: back / biceps","tkey":"PULL A","alt":"Alt: 20 min tempo run if time-poor","light":"Keep it, but cut to 3 exercises x 2 sets at RPE 6. Machines over free weights. No failure sets.","bf":"B1","lu":"L1","din":"D4","sn":["S1","S2"]},{"d":"2026-12-19","wd":"Sat","nice":"Sat 19 Dec","wk":11,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"RUN - long easy 45-60 min","tkey":"RUN long","alt":"Alt: 35 min easy + 20 min core","light":"Cut to 25-30 min easy, or walk 45 min instead.","bf":"B2","lu":"L4","din":"D6","sn":["S2"]},{"d":"2026-12-20","wd":"Sun","nice":"Sun 20 Dec","wk":11,"blk":"Block 3","dl":false,"type":"R","kcal":1380,"label":"REST - mobility / sauna / walk","tkey":"REST","alt":"Alt: 25 min shakeout + strides","light":"Stay a rest day. Gentle mobility, heat, early night. Do not add anything.","bf":"B5","lu":"L4","din":"D2","sn":["S1","S2"]},{"d":"2026-12-21","wd":"Mon","nice":"Mon 21 Dec","wk":12,"blk":"Block 3","dl":false,"type":"H","kcal":1750,"label":"GYM - Legs + Hips","tkey":"LEGS B","alt":"Alt: LEGS A always if unsure","light":"SKIP the heavy lifts. Do: hip thrust 3 x 12 light, leg press 3 x 15 at 50%, leg curl 2 x 15, 15 min easy bike. Or take the day fully off and push legs to day 4.","bf":"B1","lu":"L2","din":"D1","sn":["S1","S2"]},{"d":"2026-12-22","wd":"Tue","nice":"Tue 22 Dec","wk":12,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"RUN - intervals","tkey":"RUN intervals","alt":"Alt: 20 min tempo","light":"No intervals. 25-35 min very easy jog or a brisk walk instead.","bf":"B2","lu":"L3","din":"D7","sn":["S1","S3"]},{"d":"2026-12-23","wd":"Wed","nice":"Wed 23 Dec","wk":12,"blk":"Block 3","dl":false,"type":"M","kcal":1570,"label":"CROSSFIT - gymnastics / skill","tkey":"CROSSFIT gymnastics","alt":"Alt: add 10 min row after class","light":"Attend for skill only, low volume, no kipping or impact work. Or swap for 30 min easy row + mobility.","bf":"B3","lu":"L1","din":"D2","sn":["S4","S1","S3"]}],"B":{"B1":{"n":"Egg toast + greens","t":"Coffee + 20ml lemon juice + soda water | 60g wholegrain bread (2 slices) | 2 whole eggs | 100g spinach sauteed in 5ml olive oil | 100g Greek yogurt 0%","kcal":405,"p":28,"c":30,"f":16},"B2":{"n":"Latte + yogurt bowl","t":"Latte w/ 250ml skim milk | 200g Greek yogurt 0% | 20g rolled oats | 80g berries | 10g chia or 10 almonds","kcal":375,"p":32,"c":42,"f":8},"B3":{"n":"Tofu scramble","t":"Coffee + lemon + soda water | 200g firm tofu | 100g mushrooms + 80g chinese cabbage | 30g bread (1 slice) | 5ml sesame oil | 100g Greek yogurt 0%","kcal":445,"p":38,"c":22,"f":20},"B4":{"n":"Protein oat jar (make night before)","t":"40g rolled oats | 200ml skim milk | 1 scoop whey (30g) | 60g banana | cinnamon | black coffee","kcal":395,"p":36,"c":42,"f":6},"B5":{"n":"Rush morning (10 min)","t":"Latte w/ 250ml skim milk | 2 boiled eggs | 1 apple (150g) | coffee + lemon + soda water","kcal":335,"p":21,"c":30,"f":12}},"L":{"L1":{"n":"Rice bowl (standard)","t":"130g cooked rice | 2 boiled eggs | 150g firm tofu | 80g broccoli + 80g chinese cabbage + 50g mushrooms | 5ml sesame oil + soy/chili","kcal":580,"p":35,"c":55,"f":26},"L2":{"n":"Mantou plate (big-carb, hard days)","t":"1 mantou 80g | 2 boiled eggs | 200g firm tofu | 150g spinach + 100g cabbage, garlic, 3ml oil","kcal":630,"p":42,"c":52,"f":25},"L3":{"n":"Big bowl salad + tofu","t":"100g lettuce + 100g kale + 80g okra + 50g mushrooms | 2 boiled eggs | 200g baked/smoked tofu | dressing: 150g Greek yogurt 0% + lemon + mustard | 60g bread OR 80g rice","kcal":590,"p":48,"c":40,"f":22},"L4":{"n":"Light lunch (rest days)","t":"80g cooked rice | 2 boiled eggs | 150g firm tofu | 250g veg mix (80g okra + 80g spinach + 90g mushrooms) | 3ml oil","kcal":490,"p":35,"c":32,"f":22}},"D":{"D1":{"n":"Chicken + greens + rice","t":"150g raw chicken breast | 100g cooked rice | 100g kale + 100g broccoli | 8ml olive oil | garlic/chili","kcal":440,"p":40,"c":38,"f":13},"D2":{"n":"White fish (leanest)","t":"200g cod/basa/tilapia | 150g okra + 100g cabbage | 80g cooked rice OR 120g sweet potato | 5ml oil | ginger-soy","kcal":380,"p":42,"c":28,"f":9},"D3":{"n":"Beef + tofu stir-fry","t":"120g lean beef | 100g firm tofu | 200g veg (cabbage + mushrooms + spinach) | 5ml oil | 80g cooked rice","kcal":530,"p":39,"c":34,"f":22},"D4":{"n":"Shrimp egg-white fried rice","t":"150g shrimp | 120g cooked rice | 2 egg whites | 150g veg (chinese cabbage + mushrooms) | 5ml oil","kcal":395,"p":37,"c":32,"f":10},"D5":{"n":"Salmon night","t":"150g salmon | 150g broccoli + 100g spinach | 120g sweet potato | lemon","kcal":510,"p":34,"c":26,"f":26},"D6":{"n":"FLEX / McDonald's (1x per week, Saturday)","t":"2x cheeseburger + Coke Zero + side salad (or 1x cheeseburger + 6 nuggets + Coke Zero). Rule: lunch that day is L4 (or L1 if it is a hard day) and skip the evening yogurt.","kcal":600,"p":30,"c":60,"f":22},"D7":{"n":"Veg hotpot bowl","t":"200g firm tofu | 2 eggs | 300g veg (chinese cabbage, mushrooms, kale) | miso/kombu broth | 60g glass noodles","kcal":470,"p":36,"c":40,"f":18}},"S":{"S1":{"n":"Greek yogurt","t":"150g Greek yogurt 0% + cinnamon (+80g berries if a hard day)","kcal":85,"p":15,"c":6,"f":0},"S2":{"n":"Ginger shot","t":"60ml ginger shot, morning or pre-training","kcal":25,"p":0,"c":6,"f":0},"S3":{"n":"Kombucha","t":"250ml kombucha, with lunch or afternoon","kcal":40,"p":0,"c":9,"f":0},"S4":{"n":"Pre-CrossFit fuel","t":"1 banana (120g) OR 20g dates, 45-60 min before class","kcal":105,"p":1,"c":26,"f":0},"S5":{"n":"Hungry-at-night fix","t":"200g Greek yogurt 0% + 80g berries. Free to use any day you are genuinely hungry.","kcal":150,"p":20,"c":15,"f":0}},"PM":{"n":"PM shake (every day, fixed)","t":"1 scoop whey (30g) + 400ml skim milk + 3g creatine mono. Take within 60 min after training on training days.","kcal":265,"p":39,"c":20,"f":3},"TRAIN":{"PULL A":["Lat pulldown or assisted pull-up  4 x 8-10","Chest-supported row  4 x 10","1-arm DB row  3 x 10 / side","Face pull  3 x 15","DB curl  3 x 10-12","Cable/hammer curl  2 x 12-15","Hanging knee raise  3 x 12","~55 min. Rest 90s on the first two, 60s after."],"PULL B":["Pull-up or negatives  4 x AMRAP (log total reps)","Seated cable row  4 x 12","Straight-arm pulldown  3 x 12","DB shrug  3 x 12","Incline DB curl  3 x 12","Rope / preacher curl  2 x 15","Side plank  3 x 30s / side"],"PUSH A":["Incline DB press  4 x 8-10","Machine chest press or push-up  3 x 12","Seated DB shoulder press  4 x 10","Lateral raise  3 x 15","Cable fly  3 x 12","Rope triceps pushdown  3 x 12","Overhead triceps extension  2 x 15"],"PUSH B":["Barbell bench press  4 x 6-8","Incline machine press  3 x 10","Arnold press  3 x 12","Cable lateral raise  3 x 15 / side","Dips or close-grip push-up  3 x AMRAP","EZ-bar skullcrusher  3 x 12","Pallof press  3 x 12 / side"],"LEGS A":["Back squat or goblet squat  4 x 6-8","Romanian deadlift  4 x 8","Bulgarian split squat  3 x 10 / side","Barbell or machine hip thrust  4 x 10","Seated leg curl  3 x 12","Hip abduction machine  3 x 20","Standing calf raise  3 x 15","~65 min. This is your most important session for keeping muscle. Do not skip."],"LEGS B":["Trap-bar or conventional deadlift  4 x 5","Leg press  4 x 12","Walking lunge  3 x 20 steps","Barbell hip thrust  4 x 8 (heavier)","Leg extension  3 x 15","Cable glute kickback  3 x 15 / side","Seated calf raise  3 x 20"],"RUN intervals":["10 min easy warm-up + drills","6-8 x 400m at 5k effort, 90s jog recovery","10 min easy cool-down","Block 1: 6 reps. Block 2: 7. Block 3: 8."],"RUN tempo":["10 min easy warm-up","20 min continuous at comfortably-hard (can speak 3-4 words)","10 min easy cool-down","Block 3: extend tempo to 25 min."],"RUN easy":["35-45 min continuous, nose-breathing / conversational Z2","Finish with 4 x 20s strides if you feel good."],"RUN long":["45-60 min easy Z2, flat route","Take 200ml water + electrolytes if over 50 min."],"CROSSFIT compete":["Follow class. Two rules:","1. If a gym leg day is within 48h, cap barbell loads at ~85% of what you would race.","2. Log the WOD result. Same WOD later in the block = your progress check."],"CROSSFIT gymnastics":["Follow class. Prioritise skill quality over volume:","pull-up / toes-to-bar / HSPU / ring work.","Add 10 min easy row or bike after if the class was low-sweat."],"REST":["30-40 min walk (outdoors, no incline needed)","10 min mobility: hips, thoracic spine, ankles, lats","Optional: sauna, foam roll. This is a training day for recovery, not a nothing day."]},"start":"2026-10-08","end":"2026-12-23"}, INFO = [["The one rule","Hit protein and do the training. Everything else is adjustable."],["Targets","~1600 kcal/day average, cycled: hard days 1750-1800, gym days 1570-1650, rest days 1380-1450. Protein 135-145 g every single day."],["Steps","7500-10000 on top of training. This does more for fat loss than any single cardio session."],["Creatine","Every day in the PM shake, training or not. 3-5 g. 5 g is the standard dose at your bodyweight."],["Sleep","7-8 h. Under 6 h you lose more muscle and less fat."],["Weigh-ins","Mon, Wed, Fri, first thing, log them here. Judge the weekly average, never a single day."],["Period days 1-3","Tap the period button on the Log tab on day 1. This screen then tells you the lighter session. No heavy lower body, no competing, no intervals. Food does not change."],["Water weight before your period","Expect +0.5 to 1.5 kg. Ignore it. Do not cut calories in response."],["Flat for 2 weeks","Add 1500 steps first. Only cut 100 kcal if it is still flat a week later."],["Losing faster than 0.8 kg/week","Too fast. Add 150 kcal of carbs to hard days."],["Strength down 2 sessions running","Eat ~2100 for 3 days, then resume. Usually sleep or carbs, not the plan."],["If you only get 3 sessions","Keep legs+hips, one upper day, CrossFit. Drop the runs. Never the leg day."],["Expected outcome","-4 to -5.5 kg over the 11 weeks, ~3.5-5 kg of it fat. Planned against your Garmin maintenance of 1970, not the higher equation estimate."]];
+const LS = k => { try { return JSON.parse(localStorage.getItem("fp_"+k)) || {} } catch(e) { return {} } };
+const SV = (k,v) => localStorage.setItem("fp_"+k, JSON.stringify(v));
+let checks = LS("checks"), swaps = LS("swaps"), weights = LS("weights"), periods = LS("periods");
+if (!Array.isArray(periods.list)) periods = {list:[], span:3};
+let tab = 0, idx = 0;
+
+const byDate = {}; DATA.days.forEach((x,i)=>byDate[x.d]=i);
+function todayIdx(){
+  const t = new Date(); t.setHours(12,0,0,0);
+  const iso = t.toISOString().slice(0,10);
+  if (byDate[iso] !== undefined) return byDate[iso];
+  if (iso < DATA.start) return 0;
+  return DATA.days.length-1;
+}
+idx = todayIdx();
+
+function isLight(iso){
+  const t = new Date(iso+"T12:00:00");
+  for (const p of periods.list){
+    const s = new Date(p+"T12:00:00");
+    const diff = Math.round((t-s)/86400000);
+    if (diff >= 0 && diff < (periods.span||3)) return diff+1;
+  }
+  return 0;
+}
+const opts = {bf:Object.keys(DATA.B).sort(), lu:Object.keys(DATA.L).sort(), din:Object.keys(DATA.D).sort()};
+function pick(day, slot){
+  const k = day.d+"_"+slot;
+  return swaps[k] || day[slot];
+}
+function cycle(day, slot){
+  const list = opts[slot], cur = pick(day, slot);
+  const n = list[(list.indexOf(cur)+1) % list.length];
+  swaps[day.d+"_"+slot] = n; SV("swaps", swaps); render();
+}
+function tog(id){ checks[id] = !checks[id]; SV("checks", checks); render(); }
+function mv(n){ idx = Math.max(0, Math.min(DATA.days.length-1, idx+n)); tab = 0; render(); }
+function go(n){ tab = n; render(); }
+
+function mealRow(day, slot, code, bank, label){
+  const m = bank[code], id = day.d+"_"+slot;
+  const on = !!checks[id];
+  return `<div class="row ${on?'done':''}">
+    <button class="ck ${on?'on':''}" onclick="tog('${id}')"></button>
+    <div class="body">
+      <div class="ttl">${label}: ${m.n} <small class="dim">(${code})</small></div>
+      <div class="sub">${m.t}</div>
+      <div class="meta">${m.kcal} kcal &middot; P ${m.p} &middot; C ${m.c} &middot; F ${m.f}</div>
+      ${opts[slot]?`<button class="swap" onclick="cycle(DATA.days[${idx}],'${slot}')">swap option &#8635;</button>`:''}
+    </div></div>`;
+}
+
+function viewToday(){
+  const day = DATA.days[idx];
+  const ld = isLight(day.d);
+  const bf = pick(day,'bf'), lu = pick(day,'lu'), din = pick(day,'din');
+  let kcal = DATA.B[bf].kcal + DATA.L[lu].kcal + DATA.PM.kcal + DATA.D[din].kcal;
+  let prot = DATA.B[bf].p + DATA.L[lu].p + DATA.PM.p + DATA.D[din].p;
+  day.sn.forEach(s=>{ kcal += DATA.S[s].kcal; prot += DATA.S[s].p; });
+  let h = "";
+  if (ld) h += `<div class="alert"><b>Period day ${ld} of ${periods.span||3} - light day</b>${day.light}</div>`;
+  h += `<div class="tbar">
+    <div><b>${day.kcal}</b><span>kcal target</span></div>
+    <div><b>140</b><span>protein g</span></div>
+    <div><b>${kcal}</b><span>menu total</span></div>
+    <div><b>${prot}</b><span>menu protein</span></div>
+  </div>`;
+  const gap = kcal - day.kcal;
+  if (gap > 80) h += `<div class="card"><div class="row"><div class="body"><div class="ttl" style="color:#ffd58a">Trim about ${gap} kcal today</div><div class="sub">Pick one: skip the yogurt snack (-85), halve the rice or mantou (-80 to -100), drop the breakfast oats (-75), or use a leaner dinner (D2 or D4). The menu is built slightly generous on purpose so you choose where to cut.</div></div></div></div>`;
+  else if (gap < -80) h += `<div class="card"><div class="row"><div class="body"><div class="ttl" style="color:#a8e0bb">Room for about ${-gap} kcal more</div><div class="sub">Add the evening yogurt and berries (S5, +150) or 80 g more rice (+105). Do not under-eat on a hard day.</div></div></div></div>`;
+  const tid = day.d+"_train", ton = !!checks[tid];
+  h += `<div class="card"><h3>Training</h3>
+    <div class="row ${ton?'done':''}">
+      <button class="ck ${ton?'on':''}" onclick="tog('${tid}')"></button>
+      <div class="body"><div class="ttl">${ld?'<s>'+day.label+'</s>':day.label}</div>
+      <div class="meta">${day.alt}</div></div>
+    </div>
+    <div class="ex">${(DATA.TRAIN[day.tkey]||[]).map(x=>`<div>${x}</div>`).join("")}</div>
+    ${day.dl?'<div class="ex" style="color:#ffe6a8">DELOAD WEEK: one less set on every exercise, load down 10%.</div>':''}
+  </div>`;
+  h += `<div class="card"><h3>Food</h3>
+    ${mealRow(day,'bf',bf,DATA.B,'Breakfast')}
+    ${mealRow(day,'lu',lu,DATA.L,'Lunch')}
+    ${mealRow(day,'pm','PM',{PM:DATA.PM},'Afternoon')}
+    ${mealRow(day,'din',din,DATA.D,'Dinner')}
+  </div>`;
+  h += `<div class="card"><h3>Snacks &amp; extras</h3>` +
+    day.sn.map(s=>mealRow(day,'sn_'+s,s,DATA.S,'Snack')).join("") +
+    `<div class="row"><div class="body"><div class="sub">Steps target 7500-10000. Water 2.5-3 L.</div></div></div></div>`;
+  return h;
+}
+
+function viewWeek(){
+  const day = DATA.days[idx];
+  const wk = DATA.days.filter(x=>x.wk===day.wk);
+  let h = `<div class="card"><h3>Week ${day.wk} &middot; ${day.blk}</h3>`;
+  wk.forEach(x=>{
+    const i = byDate[x.d], ld = isLight(x.d);
+    h += `<div class="wk ${x.d===day.d?'today':''}" onclick="idx=${i};tab=0;render()">
+      <div class="dd">${x.nice.slice(0,6)}</div>
+      <div class="tt">${ld?'<span style="color:#ff9fbb">[light] </span>':''}${x.label}</div>
+      <div class="b ${x.type}">${x.kcal}</div></div>`;
+  });
+  h += `</div><div class="card"><h3>Jump</h3>
+    <div class="row"><div class="body">
+    <input type="date" min="${DATA.start}" max="${DATA.end}" value="${day.d}"
+      onchange="if(byDate[this.value]!==undefined){idx=byDate[this.value];tab=0;render()}">
+    <div style="height:8px"></div>
+    <button class="btn ghost" onclick="idx=todayIdx();tab=0;render()">Back to today</button>
+    </div></div></div>`;
+  return h;
+}
+
+function logWeight(){
+  const el = document.getElementById("wi");
+  const v = parseFloat(el.value);
+  if (!v) return;
+  weights[DATA.days[idx].d] = v; SV("weights", weights); render();
+}
+function addPeriod(){
+  const iso = DATA.days[idx].d;
+  if (!periods.list.includes(iso)) periods.list.push(iso);
+  periods.list.sort(); SV("periods", periods); render();
+}
+function delPeriod(iso){
+  periods.list = periods.list.filter(x=>x!==iso); SV("periods", periods); render();
+}
+function setSpan(v){ periods.span = Math.max(1, Math.min(6, parseInt(v)||3)); SV("periods", periods); render(); }
+
+function viewLog(){
+  const day = DATA.days[idx];
+  const ks = Object.keys(weights).sort().reverse();
+  const last7 = ks.slice(0,7).map(k=>weights[k]);
+  const avg = last7.length ? (last7.reduce((a,b)=>a+b,0)/last7.length).toFixed(2) : "-";
+  const first = ks.length ? weights[ks[ks.length-1]] : null;
+  const chg = (first && last7.length) ? ((last7.reduce((a,b)=>a+b,0)/last7.length) - first).toFixed(2) : "-";
+  let h = `<div class="tbar">
+    <div><b>${avg}</b><span>last-7 avg kg</span></div>
+    <div><b>${chg}</b><span>change vs start</span></div>
+    <div><b>${ks.length}</b><span>weigh-ins</span></div></div>`;
+  h += `<div class="card"><h3>Weight for ${day.nice}</h3><div class="row"><div class="body">
+    <input id="wi" type="number" step="0.05" placeholder="kg" value="${weights[day.d]||''}">
+    <div style="height:8px"></div>
+    <button class="btn" onclick="logWeight()">Save weigh-in</button>
+    <div class="meta">Mon / Wed / Fri, first thing, after the toilet, before food.</div>
+    </div></div></div>`;
+  h += `<div class="card"><h3>Period tracker</h3><div class="row"><div class="body">
+    <button class="btn warn" onclick="addPeriod()">My period started on ${day.nice}</button>
+    <div class="meta">This marks ${day.nice} as day 1. The next ${periods.span||3} days switch to light training automatically.</div>
+    <div style="height:10px"></div>
+    <small class="dim">Light days per period</small>
+    <input type="number" min="1" max="6" value="${periods.span||3}" onchange="setSpan(this.value)">
+    </div></div>`;
+  if (periods.list.length){
+    h += `<div class="lst">` + periods.list.slice().reverse().map(p=>{
+      const n = DATA.days[byDate[p]] ? DATA.days[byDate[p]].nice : p;
+      return `<div><span>${n}</span><span onclick="delPeriod('${p}')" style="color:#ff9fbb">remove</span></div>`;
+    }).join("") + `</div>`;
+  }
+  h += `</div>`;
+  if (ks.length){
+    h += `<div class="card"><h3>Weigh-in history</h3><div class="lst">` +
+      ks.map(k=>`<div><span>${DATA.days[byDate[k]]?DATA.days[byDate[k]].nice:k}</span><b>${weights[k]} kg</b></div>`).join("") +
+      `</div></div>`;
+  }
+  h += `<div class="card"><h3>Reset</h3><div class="row"><div class="body">
+    <button class="btn ghost" onclick="if(confirm('Clear all ticks only?')){checks={};SV('checks',checks);render()}">Clear all tick marks</button>
+    </div></div></div>`;
+  return h;
+}
+
+function viewInfo(){
+  let h = `<div class="card"><h3>How to use this</h3><div class="ex">
+    <div>Tick things off as you go. It saves on this phone only.</div>
+    <div>Tap "swap option" on any meal to cycle to another one of the same type.</div>
+    <div>On day 1 of your period, open the Log tab and tap the red button. Today, Week and the training card all switch to light versions.</div>
+    <div>Arrows at the top move a day. Week tab has a date jump.</div>
+  </div></div>`;
+  h += `<div class="card"><h3>The rules</h3>` +
+    INFO.map(([a,b])=>`<div class="row"><div class="body"><div class="ttl">${a}</div><div class="sub">${b}</div></div></div>`).join("") +
+    `</div>`;
+  h += `<div class="card"><h3>Meal bank</h3>`;
+  [["Breakfast","B"],["Lunch","L"],["Dinner","D"],["Snacks","S"]].forEach(([t,k])=>{
+    h += `<div class="ex"><div style="color:#6fb5ff">${t}</div>` +
+      Object.keys(DATA[k]).sort().map(c=>`<div><b>${c}</b> ${DATA[k][c].n} - ${DATA[k][c].kcal} kcal, P ${DATA[k][c].p}<br><small class="dim">${DATA[k][c].t}</small></div>`).join("") +
+      `</div>`;
+  });
+  h += `</div>`;
+  return h;
+}
+
+function render(){
+  const day = DATA.days[idx], ld = isLight(day.d);
+  document.getElementById("hd").textContent = day.nice;
+  document.getElementById("hs").textContent = day.blk + " \u00b7 week " + day.wk;
+  const t = {H:"Hard day", M:"Moderate", R:"Rest / walk"}[day.type];
+  document.getElementById("bg").innerHTML =
+    `<span class="b ${day.type}">${t}</span><span class="b">${day.kcal} kcal</span><span class="b">P 140 g</span>` +
+    (day.dl?`<span class="b dl">Deload</span>`:``) +
+    (ld?`<span class="b" style="background:#5a2438;color:#ffc9d8">Period day ${ld}</span>`:``);
+  document.getElementById("v").innerHTML = [viewToday, viewWeek, viewLog, viewInfo][tab]();
+  for (let i=0;i<4;i++) document.getElementById("t"+i).className = (i===tab?"on":"");
+  window.scrollTo(0,0);
+}
+let sx=null;
+document.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});
+document.addEventListener("touchend",e=>{
+  if(sx===null||tab!==0)return;
+  const dx=e.changedTouches[0].clientX-sx;
+  if(Math.abs(dx)>70) mv(dx<0?1:-1);
+  sx=null;
+},{passive:true});
+render();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("sw.js").catch(function(){});
+  });
+}
+</script>
+</body></html>
